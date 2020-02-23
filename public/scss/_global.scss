@@ -1,16 +1,32 @@
 // Global styling for this template
+html,
 body {
-  font-size: 20px;
-  color: $gray-900;
-  @include serif-font;
+    width: 100%;
+    height: 100%;
 }
 
-p {
-  line-height: 1.5;
-  margin: 30px 0;
-  a {
-    text-decoration: underline;
-  }
+body {
+    @include body-font;
+}
+
+a {
+    color: $theme-primary;
+    @include transition-all;
+    &:hover,
+    &:focus {
+        color: darken($theme-primary, 10%);
+    }
+}
+
+hr {
+    max-width: 100px;
+    margin: 25px auto 0;
+    border-width: 1px;
+    border-color: fade-out($gray-darker, .9);
+}
+
+hr.light {
+    border-color: white;
 }
 
 h1,
@@ -19,59 +35,18 @@ h3,
 h4,
 h5,
 h6 {
-  font-weight: 800;
-  @include sans-serif-font;
+    @include heading-font;
 }
 
-a {
-  color: $gray-900;
-  @include transition-all;
-  &:focus,
-  &:hover {
-    color: $primary;
-  }
+p {
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 20px;
 }
 
-blockquote {
-  font-style: italic;
-  color: $gray-600;
-}
-
-.section-heading {
-  font-size: 36px;
-  font-weight: 700;
-  margin-top: 60px;
-}
-
-.caption {
-  font-size: 14px;
-  font-style: italic;
-  display: block;
-  margin: 0;
-  padding: 10px;
-  text-align: center;
-  border-bottom-right-radius: 5px;
-  border-bottom-left-radius: 5px;
-}
-
-::-moz-selection {
-  color: $white;
-  background: $primary;
-  text-shadow: none;
-}
-
-::selection {
-  color: $white;
-  background: $primary;
-  text-shadow: none;
-}
-
-img::selection {
-  color: $white;
-  background: transparent;
-}
-
-img::-moz-selection {
-  color: $white;
-  background: transparent;
+section {
+    padding: 100px 0;
+    h2 {
+        font-size: 50px;
+    }
 }
