@@ -1,6 +1,8 @@
 # WALLAKEEP
 Wallakeep es una aplicación para la publicación de anuncios de compraventa entre particulares. Este documento da todas las instrucciones necesarias para su descarga, despliegue, inicialización y puesta en producción.
 
+Podéis ver el vídeo de presentación: [https://youtu.be/KVrFh3bRLGY](https://youtu.be/KVrFh3bRLGY)
+
 ## DESPLIEGUE
 La aplicación se encuentra desplegada en un servidor web configurado dentro de un servicio EC2 de Amazon AWS. Se ha usado Nginx como proxy inverso para poder acceder desde la URL:
 
