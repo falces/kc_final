@@ -30,7 +30,7 @@ class LoginController
 
             // Buscar el usuario en la base de datos
             const usuario = await Usuario.findOne({ email: email });
-            
+
             if(!usuario || !await bcrypt.compare(password, usuario.password)){
                 res.locals.email = email;
                 res.locals.error = res.__('invalid credentials');
@@ -38,7 +38,7 @@ class LoginController
                     title: 'Login de usuario'
                 });
                 return;
-            }
+			}
 
             req.session.authUser = {
                 _id: usuario._id,
@@ -68,14 +68,12 @@ class LoginController
     // Mover al API
     async loginJWT(req, res, next){
         try{
-console.log(req.body);
             // Recoger credenciales de la petición
             const email = req.body.email;
             const password = req.body.password;
 
             // Buscar el usuario en base de datos
             const usuario = await Usuario.findOne({ email: email });
-console.log('usuario', usuario);
 
             // Si no encontramos usuario le decimos que no
             if(!usuario || !await bcrypt.compare(password, usuario.password)){
@@ -95,7 +93,7 @@ console.log('usuario', usuario);
         }catch(err){
             next(err);
         }
-        
+
     }
 }
 

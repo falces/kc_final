@@ -8,7 +8,9 @@ const MongoStore = require('connect-mongo')(session);
 
 var app = express();
 
-// view engine setup 
+app.use(session({secret: 'ssshhhhh'}));
+
+// view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'html');
 app.engine('html', require('ejs').__express);
@@ -76,7 +78,7 @@ app.get('/login', loginController.index);
 //app.get('/login/:action', loginController.indexAction);
 app.post('/login', loginController.post);
 app.get('/logout', loginController.logout);
-app.get('/private', sessionAuth('admin'), privateController.index);
+app.get('/private', sessionAuth(), privateController.index);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -92,7 +94,7 @@ app.use(function(err, req, res, next) {
     err.status = 422; // Unprocessable Entity (WebDAV)
     const errInfo = err.array({ onlyFirstError:true })[0]; // Objeto de error de Express Validator
     // err.message = `Not valid - ${errInfo.param} must be ${errInfo.msg}`;
-    err.message = isAPI(req) ? 
+    err.message = isAPI(req) ?
       {
         message: 'Not valid',
         errors: err.mapped()
