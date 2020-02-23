@@ -1,5 +1,10 @@
 # WALLAKEEP
-API práctica del módulo Backend Avanzado con NodeJS
+Wallakeep es una aplicación para la publicación de anuncios de compraventa entre particulares. Este documento da todas las instrucciones necesarias para su descarga, despliegue, inicialización y puesta en producción.
+
+## DESPLIEGUE
+La aplicación se encuentra desplegada en un servidor web configurado dentro de un servicio EC2 de Amazon AWS. Se ha usado Nginx como proxy inverso para poder acceder desde la URL:
+
+[http://kc.ozonea.com/]()
 
 ## VARIABLES DE ENTORNO
 A partir del archivo de ejemplo:
@@ -12,34 +17,29 @@ Crear un archivo
 ```
 .env
 ```
-Con las variables correctas.
+Con las variables correctas. Como norma general sólo deberemos corregir la cadena de conexión con la base de datos y el puerto desde el que se va a servir la aplicación. Este archivo no se registrará en el control de versiones.
 
-## BASE DE DATOS
+## DESCARGA
+Para descargar esta aplicación es necesario clonar el repositorio original:
 
-### Iniciar Mongo:
-```
-./bin/mongod --dbpath ./data/db --directoryperdb
-```
-### Instalar colección y juego de datos:
-```
-npm run installDB
-```
-## SERVIDOR LOCAL:
-### Iniciar servidor web:
+`git clone https://github.com/falces/kc_final.git`
 
-```
-npm run dev
-```
-### Microservicios
-#### Creación miniaturas:
-```
-node microservices/thumbnailWorker.js
-```
+## INICIALIZACIÓN DE LA BASE DE DATOS
+Una vez iniciado el servidor de base de datos Mongo, será necesario inicializar la base de datos con algunos datos de ejemplo. Para ello, nos situamos dentro de la carpeta en la que hemos descargado la aplicación y ejecutamos:
 
-## WEB
-```
-https://localhost:3000
-```
+`node ./lib/installDB`
+
+## INICIAR LA APLICACIÓN
+Ahora podemos iniciar la aplicación. Desde la misma carpeta raíz, ejecutamos:
+
+`npm start`
+
+Y tendremos la aplicación servida en el servidor local y en el puerto configurado en el archivo .env.
+
+Junto con la aplicación se inicializarán los diferentes microservicios necesarios.
+
+Podemos acceder a la aplicación en `http://localhost:3000` (si hemos elegido el puerto 3000).
+
 
 ## API SIN AUTENTICACIÓN
 
