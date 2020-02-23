@@ -19,10 +19,10 @@ Crear un archivo
 ```
 Con las variables correctas. Como norma general sólo deberemos corregir la cadena de conexión con la base de datos y el puerto desde el que se va a servir la aplicación. Este archivo no se registrará en el control de versiones.
 
-## DESCARGA
+## DESCARGA PARA USO LOCAL
 Para descargar esta aplicación es necesario clonar el repositorio original:
 
-`git clone https://github.com/falces/kc_final.git`
+`git clone http://github.com/falces/kc_final.git`
 
 ## INICIALIZACIÓN DE LA BASE DE DATOS
 Una vez iniciado el servidor de base de datos Mongo, será necesario inicializar la base de datos con algunos datos de ejemplo. Para ello, nos situamos dentro de la carpeta en la que hemos descargado la aplicación y ejecutamos:
@@ -47,7 +47,7 @@ Podemos acceder a la aplicación en `http://localhost:3000` (si hemos elegido el
 Request:
 
 ```
-https://localhost:3000/apiv1/tags
+http://kc.ozonea.com/apiv1/tags
 ```
 Response:
 
@@ -72,7 +72,7 @@ Response:
 Request:
 
 ```
-https://localhost:3000/apiv1/login
+http://kc.ozonea.com/apiv1/login
 ```
 Parámetros GET/POST:
 
@@ -99,7 +99,7 @@ Se requiere token de autenticación.
 Request:
 
 ```
-https://localhost:3000/apiv1/anuncios?tag=mobile,motor&nombre=&start=0&limit=100&sort=_id&venta=false&precio=-50
+http://kc.ozonea.com/apiv1/anuncios?tag=mobile,motor&nombre=&start=0&limit=100&sort=_id&venta=false&precio=-50
 ```
 Autenticación POST/GET:
 ```
@@ -145,7 +145,7 @@ Se require token de autenticación
 Request POST:
 
 ```
-https://localhost:3000/apiv1/nuevo
+http://kc.ozonea.com/apiv1/nuevo
 ```
 
 Parámetros:
