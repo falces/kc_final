@@ -42,3 +42,48 @@ header.masthead {
 .static_content{
 	margin-top: 30px;
 }
+
+
+elemento {
+
+}
+h1, h2, h3, h4, h5, h6 {
+
+    font-family: Catamaran,Helvetica,Arial,sans-serif;
+    font-weight: 200;
+    letter-spacing: 1px;
+
+}
+.h5, h5 {
+
+    font-size: 1.25rem;
+
+}
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+
+    margin-bottom: .5rem;
+    font-weight: 500;
+    line-height: 1.2;
+
+}
+h1, h2, h3, h4, h5, h6 {
+
+    margin-top: 0;
+    margin-bottom: .5rem;
+
+}
+*, ::after, ::before {
+
+    box-sizing: border-box;
+
+}
+.card {
+
+    word-wrap: break-word;
+
+}
+header.masthead {
+
+    color: #000 !important;
+
+}
