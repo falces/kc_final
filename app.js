@@ -28,11 +28,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 const i18n = require('./lib/i18nConfigure')();
 app.use(i18n.init);
 
-//i18n.setLocale('es');
-//console.log(i18n.__('EXAMPLE'));
-
-// require('./lib/connectMongoose');
-// Recuperamos la conexión en una constante: 
+// Recuperamos la conexión en una constante:
 const mongooseConnection = require('./lib/connectMongoose');
 require('./models/APIv1');
 
@@ -45,7 +41,7 @@ app.post('/apiv1/login', loginController.loginJWT);
  * Inicializamos y cargamos la sesión del usuario que hace la petición
  */
 app.use(session({
-  name: 'nodepop-sesion',
+  name: 'wallakeep-sesion',
   secret: 'oadkfja0ifq943n234gwlkrf249jt2g2g',
   resave: false,
   saveUninitialized: true,
@@ -73,9 +69,7 @@ app.use('/', require('./routes/index'));
 app.use('/anuncios', require('./routes/anuncios'));
 app.use('/change-locale', require('./routes/change-locale'));
 app.use('/tags', require('./routes/tags'));
-// usamos el estilo de controladores para estructurar las rutas siguientes:
 app.get('/login', loginController.index);
-//app.get('/login/:action', loginController.indexAction);
 app.post('/login', loginController.post);
 app.get('/logout', loginController.logout);
 app.get('/private', sessionAuth(), privateController.index);
@@ -93,7 +87,6 @@ app.use(function(err, req, res, next) {
   if(err.array){  // Comprobamos si err tiene una propiedad array
     err.status = 422; // Unprocessable Entity (WebDAV)
     const errInfo = err.array({ onlyFirstError:true })[0]; // Objeto de error de Express Validator
-    // err.message = `Not valid - ${errInfo.param} must be ${errInfo.msg}`;
     err.message = isAPI(req) ?
       {
         message: 'Not valid',

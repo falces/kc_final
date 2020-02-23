@@ -1,8 +1,8 @@
 'use strict';
+
 const Usuario = require('../models/Usuario');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-// Creamos sun controller que nos servirá para asociar rutas en app.js
 
 class LoginController
 {
@@ -16,7 +16,7 @@ class LoginController
         res.render('login', {
             title: 'Login de usuario'
         });
-    }
+	}
 
     /**
      * POST /login
@@ -25,14 +25,14 @@ class LoginController
     {
         try{
             // Recoger parámetros del cuerpo de la petición
-            const email = req.body.email;
+            const _email = req.body.email;
             const password = req.body.password;
 
             // Buscar el usuario en la base de datos
-            const usuario = await Usuario.findOne({ email: email });
+			const usuario = await Usuario.findOne({email: _email});
 
             if(!usuario || !await bcrypt.compare(password, usuario.password)){
-                res.locals.email = email;
+                res.locals.email = _email;
                 res.locals.error = res.__('invalid credentials');
                 res.render('login', {
                     title: 'Login de usuario'
@@ -82,7 +82,6 @@ class LoginController
             }
 
             // Si hay usuario, creamos un JWT jsonwebtoken
-            // No meter una instancia de mongoose en el Payload
             const token = jwt.sign({ _id: usuario.id }, process.env.JWT_SECRET, {
                 expiresIn: '2d'
             });
